@@ -14,9 +14,13 @@
     <div class="container">
         
         <h1>TermTrack</h1>
-        <p class="subtitle">Upload your bash history. See what you actually type.</p>
+        <p class="subtitle">Upload your shell history. See what you actually type.</p>
 
         <form id="upload-form" enctype="multipart/form-data">
+            <select name="source" id="source">
+                <option value="bash">Bash</option>
+                <option value="custom-shell">Custom Shell</option>
+            </select>
             <input type="file" name="history" id="history" accept=".txt, .bash_history">
 
             <button type="submit">Analyze</button>
