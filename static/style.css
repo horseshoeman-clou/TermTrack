@@ -65,3 +65,26 @@ button:hover{
     margin-top: 2rem;
     color:#58a6ff
 }
+
+.charts {
+    margin-top: 2rem;
+    display: none;      
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+}
+
+.chart-box {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    padding: 1rem;
+    height: 320px;          
+    width: 100%;
+    position: relative;
+}
+
+.chart-box canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
