@@ -2,47 +2,59 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TermTrack</title>
-    
     <link rel="stylesheet" href="/static/style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
 </head>
-
 <body>
     <div class="container">
-        
         <h1>TermTrack</h1>
-        <p class="subtitle">Upload your shell history. See what you actually type.</p>
+        <p class="subtitle" id="subtitle">Upload your shell history. See what you actually type.</p>
 
-        <form id="upload-form" enctype="multipart/form-data">
-            <select name="source" id="source">
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="commands">Commands</button>
+            <button class="tab-btn" data-tab="folders">Folder Tracker</button>
+        </div>
 
-                <option value="bash">Bash</option>
-                <option value="custom-shell">Custom Shell</option>
-            
-            </select>
-
-            <input type="file" name="history" id="history" accept=".txt, .bash_history">
-
-            <button type="submit">Analyze</button>
-        </form>
-
-        <div id="result"></div>
-
-        <div class="charts" style="display: none;">
-            <div class="chart-box">
-                <canvas id="topChart"></canvas>
+        <div id="commands-tab" class="tab-content active">
+            <div class="source-tabs">
+                <button class="source-btn active" data-source="all">All</button>
+                <button class="source-btn" data-source="bash">Bash</button>
+                <button class="source-btn" data-source="custom-shell">Custom Shell</button>
+                <button class="source-btn clear-btn" id="clear-btn">Clear Data</button>
             </div>
-            <div class="chart-box">
-                <canvas id="catChart"></canvas>
+
+            <form id="upload-form" enctype="multipart/form-data">
+                <select name="source" id="source">
+                    <option value="bash">Bash</option>
+                    <option value="custom-shell">Custom Shell</option>
+                </select>
+                <input type="file" name="history" id="history" accept=".txt,.bash_history">
+                <button type="submit">Analyze</button>
+            </form>
+
+            <div id="result"></div>
+
+            <div class="charts" style="display:none;">
+                <div class="chart-box">
+                    <canvas id="topChart"></canvas>
+                </div>
+                <div class="chart-box">
+                    <canvas id="catChart"></canvas>
+                </div>
             </div>
+        </div>
+
+        <div id="folders-tab" class="tab-content">
+            <div class="folder-scan">
+                <input type="text" id="folder-path" placeholder="~/cses or /home/user/practice">
+                <button id="scan-btn">Scan Folder</button>
+            </div>
+            <div id="folder-result"></div>
         </div>
     </div>
 
     <script src="/static/script.js"></script>
-
 </body>
 </html>
