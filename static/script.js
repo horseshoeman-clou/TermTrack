@@ -31,7 +31,7 @@ tabBtns.forEach(btn => {
     });
 });
 
-// Source filtering
+
 sourceBtns.forEach(btn => {
     if (btn.id === 'clear-btn') return;
     btn.addEventListener('click', () => {
@@ -42,7 +42,7 @@ sourceBtns.forEach(btn => {
     });
 });
 
-// Clear data
+
 clearBtn.addEventListener('click', async () => {
     if (!confirm('Clear all data?')) return;
     const res = await fetch('/clear', { method: 'POST' });
@@ -56,7 +56,7 @@ clearBtn.addEventListener('click', async () => {
     result.textContent = 'Data cleared.';
 });
 
-// Upload
+
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const fileInput = document.getElementById('history');
@@ -221,7 +221,7 @@ function drawCharts(stats) {
     });
 }
 
-// Folder scanner
+
 scanBtn.addEventListener('click', async () => {
     const path = folderPathInput.value.trim();
     if (!path) {
@@ -289,7 +289,7 @@ function renderFolderStats(data) {
     folderResult.innerHTML = html;
 }
 
-// Auto-load on page open
+
 window.addEventListener('DOMContentLoaded', async () => {
     const res = await fetch('/has-data');
     const { count } = await res.json();

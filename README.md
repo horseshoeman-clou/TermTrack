@@ -11,13 +11,23 @@ Terminal command analytic + folder progress tracker. Built because I wanted to s
 
 I built this after realizing I had no idea whether I actually spent more time navigating, building, editing, or committing. The answer turned out to be "clearing the terminal", but the data was worth it.
 
-## Demo 
+## Live Demo 
+
+**https://termtrack.onrender.com/**
+
+Hosted on Render.
 
 **Commands Tab** - Upload `.bash_history` or any shell log. See top command and category breakdown.
 
 **Folder Tracker Tab** - Scan `~/cses`, `~/projects`, or any path. Get per-subfolder file counts with totals.
 
-## Installation
+
+> **Note — Folder Analysis is local-only.**
+ The folder scanner reads the filesystem of the machine running the Flask
+ server, so on the hosted demo it can only see Render's servers, not your
+ folders. To use it, clone this repo and run the app locally:
+
+# Installation
 
 ```bash
 git clone https://github.com/horseshoeman-clou/TermTrack.git
@@ -25,6 +35,17 @@ cd TermTrack
 pip install -r requirements.txt
 python app.py
 ```
+
+
+# Run 
+
+```bash
+pip install flask
+python app.py
+```
+
+> Then open http://localhost:5000, switch to the **Folders** tab, and enter an
+> absolute path like `/home/you/cses-solutions` or just `cses-solutions`.
 
 ## Stack
 
@@ -43,15 +64,6 @@ termtrack/
       ├── style.css   # Terminal theme
       └── script.js   # Charts + logic
 ```
-## Run 
-
-```bash
-pip install flask
-python app.py
-```
-
-open https://127.0.0.1:5000.
-
 ## What I learned
 
 - SQLite is just a file with a query language. No server needed.
