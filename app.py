@@ -50,7 +50,14 @@ def scan_folder():
 def folder_stats():
 	return database.get_folder_stats()
 
+@app.route("/clear", methods=["POST"])
+def clear():
+	database.clear_data()
+	return {"status": "ok"}
+
+
 if __name__ == "__main__":
 
 	port = int(os.environ.get("PORT", 5000))
 	app.run(host="0.0.0.0", port=port, debug=False)
+

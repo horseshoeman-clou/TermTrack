@@ -45,8 +45,14 @@ sourceBtns.forEach(btn => {
 // Clear data
 clearBtn.addEventListener('click', async () => {
     if (!confirm('Clear all data?')) return;
-    await fetch('/clear', { method: 'POST' });
+    const res = await fetch('/clear', { method: 'POST' });
+
+    if (!res.ok){
+	result.textContent = 'Clear failed: '+res.status;
+	return;
+    }
     chartsDiv.style.display = 'none';
+    folderResult.innerHTML = '';
     result.textContent = 'Data cleared.';
 });
 
